@@ -1,7 +1,6 @@
 package com.sstefanovskyi.urlshortener;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,10 +21,10 @@ public class UrlShortenerRestController {
     private Map<String, ShortenerUrl> shortenerUrlList = new HashMap<>();
 
     @RequestMapping(value="/shortenerurl", method=RequestMethod.POST)
-    public ResponseEntity<Object> getShortenerUrl(@RequestBody ShortenerUrl shortenerUrl) throws MalformedURLException {
+    public ResponseEntity<Object> getShortenerUrl(@RequestBody ShortenerUrl shortenerUrl) {
         String randomChar = getRandomChars();
         setShortUrl(randomChar, shortenerUrl);
-        return new ResponseEntity<Object>(shortenerUrl, HttpStatus.OK);
+        return new ResponseEntity<>(shortenerUrl, HttpStatus.OK);
     }
 
     @RequestMapping(value="/s/{randomstring}", method=RequestMethod.GET)
@@ -33,7 +32,7 @@ public class UrlShortenerRestController {
         response.sendRedirect(shortenerUrlList.get(randomString).getFull_url());
     }
 
-    private void setShortUrl(String randomChar, ShortenerUrl shortenerUrl) throws MalformedURLException {
+    private void setShortUrl(String randomChar, ShortenerUrl shortenerUrl) {
         shortenerUrl.setShort_url("http://localhost:8081/s/"+randomChar);
         shortenerUrlList.put(randomChar, shortenerUrl);
     }
