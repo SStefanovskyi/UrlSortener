@@ -2,7 +2,7 @@ $(document).ready(function() {
     $("button").click(function() {
         $.ajax({
             type : 'POST',
-            url : 'http://localhost:8080/urlshortener',
+            url : 'http://localhost:8081/urlshortener',
             data : JSON.stringify({
                 "full_url" : $("#urlinput").val()
             }),

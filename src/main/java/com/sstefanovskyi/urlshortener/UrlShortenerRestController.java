@@ -34,7 +34,7 @@ public class UrlShortenerRestController {
     }
 
     private void setShortUrl(String randomChar, ShortenerUrl shortenerUrl) throws MalformedURLException {
-        shortenerUrl.setShort_url("http://localhost:8080/s/"+randomChar);
+        shortenerUrl.setShort_url("http://localhost:8081/s/"+randomChar);
         shortenerUrlList.put(randomChar, shortenerUrl);
     }
 
