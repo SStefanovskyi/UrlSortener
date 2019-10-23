@@ -57,14 +57,14 @@ public class IDConverter {
     public static String createUniqueID(Long id){
         List<Integer> base62ID = convertBase10ToBase62ID(id);
         StringBuilder uniqueURLID = new StringBuilder();
-        for(int digit: Base62ID){
+        for(int digit: base62ID){
             uniqueURLID.append(indexToCharTable.get(digit));
         }
         return uniqueURLID.toString();
     }
 
     private static List<Integer> convertBase10ToBase62ID(Long id){
-        List<Integer> digits = new LinkedList<>;
+        List<Integer> digits = new LinkedList<>();
         while(id > 0){
             int remeinder = (int)(id % 62);
             ((LinkedList<Integer>) digits).addFirst(remeinder);
@@ -73,8 +73,8 @@ public class IDConverter {
         return digits;
     }
 
-    public static Long GetDictionaryKeyFromUniqueID(String uniqueID){
-        List<Character> base62IDs = new ArrayList<>;
+    public static Long getDictionaryKeyFromUniqueID(String uniqueID){
+        List<Character> base62IDs = new ArrayList<>();
         for(int i =0; i < uniqueID.length(); ++i){
             base62IDs.add(uniqueID.charAt(i));
         }
@@ -84,8 +84,8 @@ public class IDConverter {
 
     public static Long convertBase62ToBase10ID(List<Character> ids){
         long id =0L;
-        for(int i = 0; exp = ids.size() - 1; i = ids.size(); ++i --exp){
-            int Base10 = charToIndexTable.get(ids.get(i));
+        for(int i = 0, exp = ids.size() - 1; i < ids.size(); ++i, --exp){
+            int base10 = charToIndexTable.get(ids.get(i));
             id += (base10 * Math.pow(62.0, exp));
         }
         return id;

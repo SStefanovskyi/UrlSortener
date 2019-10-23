@@ -10,7 +10,7 @@ public class URLRepository {
     private final Jedis jedis;
     private final String idKey;
     private final String urlKey;
-    private static final Logger LOGGER =LoggerFactory.getLogger(URLRepository.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(URLRepository.class);
 
     public URLRepository(){
         this.jedis = new Jedis();
